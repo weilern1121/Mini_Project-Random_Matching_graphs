@@ -98,11 +98,21 @@ public class Main {
         }
     }
 
-    private static int randomStep(BipartiteGraph graph, int from) {
+    private static int randomStepToNeighbor(BipartiteGraph graph, int from) {
         if (from > graph.getNumOfVertex() - 1)
             throw new IllegalArgumentException("ERROR - randomStep : from index illegal!");
         Random r = new Random();
         int tmp = r.nextInt(graph.getDRegularNum()); //random a number between 0 to d-1
+        return graph.getAdjListArray()[from].getEdges().get(tmp);
+    }
+
+    private static int randomStepToSomeoneRandomaly(BipartiteGraph graph, int from) {
+        if (from > graph.getNumOfVertex() - 1)
+            throw new IllegalArgumentException("ERROR - randomStep : from index illegal!");
+        Random r = new Random();
+        int tmp = r.nextInt(graph.getNumOfVertex()); //random a number between 0 to NumOfVertex+2
+        if(tmp>=graph.getAdjListArray()[from].getEdges().size()) //if true - random to not neighbor
+            return -1;
         return graph.getAdjListArray()[from].getEdges().get(tmp);
     }
 
@@ -115,11 +125,22 @@ public class Main {
         System.out.println("\nnum of edges: " + graph.getEdges().size() + "\n\n");
         printVNeighborMatrix(graph);
 
+        graph.makeDirectedGraph();
+        System.out.println("\n\n\n3d graph:");
+        printMatrixGraph(graph);
+        System.out.println("\nnum of edges: " + graph.getEdges().size() + "\n\n");
+        printVNeighborMatrix(graph);
+
+
+//        BipartiteGraph g2 = graph.copyOFGraph(graph);
+
+
         graph.mergeNodesToSuper(0,1);
         System.out.println("\n\n\n3d graph:");
         printMatrixGraph(graph);
         System.out.println("\nnum of edges: " + graph.getEdges().size() + "\n\n");
         printVNeighborMatrix(graph);
+
 
 
         graph.mergeNodesToSuper(2,3);
@@ -135,26 +156,54 @@ public class Main {
         System.out.println("\nnum of edges: " + graph.getEdges().size() + "\n\n");
         printVNeighborMatrix(graph);
 
+/*
+        System.out.println("\n\n\n--------------------------------\n\n");
+        System.out.println("\ng2:");
+        printMatrixGraph(g2);
+        System.out.println("\nnum of edges: " + g2.getEdges().size() + "\n\n");
+        printVNeighborMatrix(g2);
+        */
 
 
-        /*
-        //test randomStep
+
+/*
+        //test randomStep funcs
         int counter1=0, counter3=0, counter5=0;
         for(int i=0; i<100; i++){
-            switch (randomStep(graph1,9)){
-                case 1:
+            switch (randomStepToNeighbor(graph,3)){
+                case 0:
                     counter1++;
                     break;
-                case 3:
+                case 2:
                     counter3++;
                     break;
-                case 9:
+                case 8:
+                    counter5++;
+                    break;
+            }
+        }
+        System.out.println("counter1="+counter1+"\tcounter3= "+counter3+"\tcounter5= "+counter5+"\n\n");
+
+        counter1=0;
+        counter3=0;
+        counter5=0;
+        for(int i=0; i<100; i++){
+            switch (randomStepToSomeoneRandomaly(graph,3)){
+                case 0:
+                    counter1++;
+                    break;
+                case 2:
+                    counter3++;
+                    break;
+                case 8:
                     counter5++;
                     break;
             }
         }
         System.out.println("counter1="+counter1+"\tcounter3= "+counter3+"\tcounter5= "+counter5);
-        */
+*/
+
+
 
     }
 }

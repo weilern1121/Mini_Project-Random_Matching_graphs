@@ -34,6 +34,7 @@ public class BipartiteGraph {
         this.edges = new LinkedList<>();
         this.edgeCounter = 1;
         this.dRegularNum = dregNum;
+
     }
 
 
@@ -109,6 +110,15 @@ public class BipartiteGraph {
         return adjListArray;
     }
 
+    /*** setters ***/
+    public void setdRegularNum(int dRegularNum) {
+        this.dRegularNum = dRegularNum;
+    }
+
+    public void setEdgeCounter(int edgeCounter) {
+        this.edgeCounter = edgeCounter;
+    }
+
 
     /*** methods ***/
     public boolean contains(int from, int to) {
@@ -181,7 +191,8 @@ public class BipartiteGraph {
         }
     }
 
-
+    //TODO - NEED TO REPLACE THIS FUNC IN RUNALGORITHM LATER
+    //TODO - THIS FUNC MAKE THE FROM NODE TO THE SUPERNODE! NOT CREATING ANOTHER COPY!!
     //have to call this func AFTER making the graph directed!
     public void mergeNodesToSuper(int from, int to) {
         //VALIDATION CHECKS
@@ -189,14 +200,14 @@ public class BipartiteGraph {
             throw new IllegalArgumentException("ERROR - mergeNodesToSuper: illegal indexes!");
         if(from%2!=0 || to%2==0)
             throw new IllegalStateException("Error - mergeNodesToSuper: illegal indexes!(2)");
-        if(!adjListArray[from].getEdges().contains(to)||!adjListArray[to].getEdges().contains(from))
+        if(!adjListArray[from].getEdges().contains(to))
             throw new IllegalStateException("Error - mergeNodesToSuper: can't merge nodes that are not already connected!!");
 
         adjListArray[from].setSuperNode(true);
         adjListArray[to].setSuperNode(true);
         //UPDATE ALL OTHER NODES
-        int counter = 0; //used to make sure that exactly (d-1) nodes changed their edge list
-        for (int i = 0; i < numOfVertex - 2; i++) {
+        int counter = 0, num=numOfVertex - 2; //used to make sure that exactly (d-1) nodes changed their edge list
+        for (int i = 0; i < num; i++) {
             if (i != from && i != to && adjListArray[i].changeSuperInList(to, from))
                 counter++;
         }
@@ -207,9 +218,36 @@ public class BipartiteGraph {
         //UPDATE FROM AND TO NODE'S LISTS
         adjListArray[to].getEdges().removeFirstOccurrence(from);
         adjListArray[from].getEdges().removeFirstOccurrence(to);
-        adjListArray[from].addEdgesList(adjListArray[to].getEdges());
         adjListArray[to].resetEdges();
+        adjListArray[from].addEdgesList(adjListArray[to].getEdges());
 
+        for (int i = 0; i < num; i++)
+            adjListArray[i].fixEdgesList();
+    }
+
+    //TODO - NEED TO REPLACE THIS FUNC IN RUNALGORITHM LATER
+    public BipartiteGraph copyOFGraph(BipartiteGraph src){
+        BipartiteGraph output = new BipartiteGraph(src.numOfVertex-2,src.getDRegularNum());
+        for (Edge e:src.getEdges()) {
+            output.getAdjListArray()[e.getV_from()].getEdges().add(e.getV_to());
+            output.getAdjListArray()[e.getV_to()].getEdges().add(e.getV_from());
+            Edge tmp=new Edge(e.getV_from(),e.getV_to(),e.getV_num());
+            output.edges.add(tmp);
+        }
+        for(int i=0; i<src.numOfVertex-2;i++){
+            output.adjListArray[i].setSuperNode(src.adjListArray[i].isSuperNode());
+            output.adjListArray[i].setIdNum(src.adjListArray[i].getIdNum());
+        }
+        output.setdRegularNum(src.dRegularNum);
+        output.setEdgeCounter(src.edgeCounter);
+
+        return output;
+    }
+
+    //TODO - NEED TO REPLACE THIS FUNC IN RUNALGORITHM LATER
+    public void makeDirectedGraph(){
+        for(int i=1; i<numOfVertex-2; i+=2)
+            adjListArray[i].resetEdges();
     }
 
 

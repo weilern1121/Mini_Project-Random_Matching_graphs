@@ -46,9 +46,11 @@ public class Node {
         return isSuperNode;
     }
 
+
     /*** methods ***/
     public void resetEdges() {
         this.edges = new LinkedList<>();
+
     }
 
     public void addEdgesList(LinkedList edgesToAdd) {
@@ -61,6 +63,8 @@ public class Node {
         this.isSuperNode=b;
     }
 
+    public void setIdNum(int num){this.idNum=num;}
+
     public boolean changeSuperInList( int elem , int changeTo){
         if(!this.edges.contains(elem)) //boolean used in graph's side
             return false;
@@ -68,6 +72,11 @@ public class Node {
         this.edges.add(changeTo);
         Collections.sort(this.edges); //finnaly - sort by vNum
         return true;
+    }
+
+    public void fixEdgesList(){
+        this.edges.removeFirstOccurrence(this.idNum);
+        Collections.sort(this.edges);
     }
 
 }
