@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8df746e0-c86a-4f30-bfec-4d8107e3fffe" name="Default Changelist" comment="" />
+    <list default="true" id="8df746e0-c86a-4f30-bfec-4d8107e3fffe" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PerfectMatchingBipartiteGraph/BipartiteGraph.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PerfectMatchingBipartiteGraph/BipartiteGraph.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PerfectMatchingBipartiteGraph/Edge.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PerfectMatchingBipartiteGraph/Edge.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PerfectMatchingBipartiteGraph/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PerfectMatchingBipartiteGraph/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PerfectMatchingBipartiteGraph/Node$VerticeType.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PerfectMatchingBipartiteGraph/Node$VerticeType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PerfectMatchingBipartiteGraph/Node.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PerfectMatchingBipartiteGraph/Node.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PerfectMatchingBipartiteGraph/RunAlgorithm.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PerfectMatchingBipartiteGraph/RunAlgorithm.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BipartiteGraph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BipartiteGraph.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Edge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Edge.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Node.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RunAlgorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RunAlgorithm.java" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -11,41 +24,30 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/BipartiteGraph.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="26">
-              <caret line="194" column="87" selection-start-line="194" selection-start-column="87" selection-end-line="194" selection-end-column="87" />
+            <state relative-caret-position="-1065">
+              <caret line="15" column="16" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2696#2697#0" expanded="true" />
-                <element signature="e#2731#2732#0" expanded="true" />
-                <element signature="e#3634#3635#0" expanded="true" />
-                <element signature="e#3680#3681#0" expanded="true" />
-                <element signature="e#3731#3732#0" expanded="true" />
-                <element signature="e#3777#3778#0" expanded="true" />
-                <element signature="method#removeEdge#0;class#BipartiteGraph#0" />
-                <element signature="method#printEdges#0;class#BipartiteGraph#0" />
-                <element signature="e#4917#4918#0" expanded="true" />
-                <element signature="e#4951#4952#0" expanded="true" />
-                <element signature="method#deepCopyGraph#0;class#BipartiteGraph#0" />
-                <element signature="method#fillVNeighborArr#0;class#BipartiteGraph#0" />
+                <element signature="e#3024#3025#0" expanded="true" />
+                <element signature="e#3094#3095#0" expanded="true" />
+                <element signature="e#3450#3451#0" expanded="true" />
+                <element signature="e#3547#3548#0" expanded="true" />
+                <element signature="e#5055#5056#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="89">
-              <caret line="158" column="2" selection-start-line="158" selection-start-column="2" selection-end-line="158" selection-end-column="2" />
+            <state relative-caret-position="263">
+              <caret line="129" column="30" selection-start-line="129" selection-start-column="30" selection-end-line="129" selection-end-column="30" />
               <folding>
-                <element signature="method#printMatrixGraph#0;class#Main#0" />
-                <element signature="method#printMatrixGraph#1;class#Main#0" />
-                <element signature="method#printVNeighborMatrix#0;class#Main#0" />
-                <element signature="method#randomStep#0;class#Main#0" />
-                <element signature="method#randomStepToNeighbor#1;class#Main#0" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -54,12 +56,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/RunAlgorithm.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="665">
-              <caret line="244" column="2" selection-start-line="244" selection-start-column="2" selection-end-line="244" selection-end-column="2" />
+            <state relative-caret-position="369">
+              <caret line="208" column="10" selection-start-line="208" selection-start-column="10" selection-end-line="208" selection-end-column="10" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#Sample_Out_Start#0;class#RunAlgorithm#0" />
-                <element signature="method#Sample_Out_Mid#0;class#RunAlgorithm#0" />
               </folding>
             </state>
           </provider>
@@ -68,10 +68,13 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Edge.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="486">
-              <caret line="28" column="26" selection-start-line="28" selection-start-column="26" selection-end-line="28" selection-end-column="26" />
+            <state relative-caret-position="525">
+              <caret line="25" selection-start-line="25" selection-end-line="25" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#348#349#0" expanded="true" />
+                <element signature="e#377#378#0" expanded="true" />
+                <element signature="e#433#434#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -80,12 +83,25 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Node.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="48" selection-start-line="48" selection-end-line="48" />
+            <state relative-caret-position="261">
+              <caret line="133" selection-start-line="133" selection-end-line="133" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1044#1045#0" expanded="true" />
-                <element signature="e#1072#1073#0" expanded="true" />
+                <element signature="e#791#792#0" expanded="true" />
+                <element signature="e#819#820#0" expanded="true" />
+                <element signature="e#1032#1033#0" expanded="true" />
+                <element signature="e#1062#1063#0" expanded="true" />
+                <element signature="e#1104#1105#0" expanded="true" />
+                <element signature="e#1132#1133#0" expanded="true" />
+                <element signature="e#1996#1997#0" expanded="true" />
+                <element signature="e#2026#2027#0" expanded="true" />
+                <element signature="e#2068#2069#0" expanded="true" />
+                <element signature="e#2099#2100#0" expanded="true" />
+                <element signature="e#2142#2143#0" expanded="true" />
+                <element signature="e#2176#2177#0" expanded="true" />
+                <element signature="e#2435#2436#0" expanded="true" />
+                <element signature="e#2469#2470#0" expanded="true" />
+                <element signature="e#2671#2672#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -103,52 +119,68 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>add</find>
+      <find>for</find>
+      <find>NodeS</find>
+      <find>NodeT</find>
+      <find>SetNewMj</find>
+      <find>isSuperNode</find>
+      <find>setSuperNode</find>
+      <find>set</find>
+      <find>EdgeContain</find>
+      <find>d-regular num must be smaller then number of vertices!</find>
     </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/Edge.java" />
-        <option value="$PROJECT_DIR$/src/RunAlgorithm.java" />
+        <option value="$PROJECT_DIR$/src/InitEdge.java" />
+        <option value="$PROJECT_DIR$/src/InitNode.java" />
+        <option value="$PROJECT_DIR$/src/MAINYOAV (1).java" />
         <option value="$PROJECT_DIR$/src/Node.java" />
-        <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/BipartiteGraph.java" />
+        <option value="$PROJECT_DIR$/src/RunAlgorithm.java" />
+        <option value="$PROJECT_DIR$/src/Main.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="1877" />
-    <option name="y" value="339" />
-    <option name="width" value="784" />
-    <option name="height" value="832" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="1912" />
+    <option name="y" value="-8" />
+    <option name="width" value="1152" />
+    <option name="height" value="618" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="PerfectMatchingBipartiteGraph" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PerfectMatchingBipartiteGraph" type="462c0819:PsiDirectoryNode" />
+              <item name="Mini_Project-Random_Matching_graphs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Mini_Project-Random_Matching_graphs" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="PerfectMatchingBipartiteGraph" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PerfectMatchingBipartiteGraph" type="462c0819:PsiDirectoryNode" />
+              <item name="Mini_Project-Random_Matching_graphs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Mini_Project-Random_Matching_graphs" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1560904644518" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1562014507989" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -193,7 +225,7 @@
     <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20362474" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1716418" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -202,15 +234,15 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.48212352" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4539545" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.28169015" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.5167931" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.32936078" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.3286119" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -221,73 +253,101 @@
       <window_info anchor="right" id="Palette&#9;" order="7" />
     </layout>
   </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="((RunAlgorithm)this).QNodes" custom="RunAlgorithm" />
+        <watch expression="((RunAlgorithm)this).SNodes" custom="RunAlgorithm" />
+        <watch expression="((RunAlgorithm)this).QNodes[2].SuperEdge" custom="RunAlgorithm" />
+        <watch expression="TransEdges.get(0)" />
+        <watch expression="TransEdges.get(0)" language="JAVA" />
+        <watch expression="((RunAlgorithm)this).Mj.get(0).V_from" custom="RunAlgorithm" />
+        <watch expression="p.get(0)" />
+        <watch expression="Mj.get(0)" />
+        <watch expression="newPath.get(3).V_from" />
+      </configuration>
+    </watches-manager>
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Edge.java">
+    <entry file="file://$PROJECT_DIR$/src/InitNode.java" />
+    <entry file="file://$PROJECT_DIR$/src/InitEdge.java" />
+    <entry file="file://$PROJECT_DIR$/src/MAINYOAV (1).java" />
+    <entry file="file://$PROJECT_DIR$/src/Node.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="28" column="26" selection-start-line="28" selection-start-column="26" selection-end-line="28" selection-end-column="26" />
+        <state relative-caret-position="261">
+          <caret line="133" selection-start-line="133" selection-end-line="133" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#791#792#0" expanded="true" />
+            <element signature="e#819#820#0" expanded="true" />
+            <element signature="e#1032#1033#0" expanded="true" />
+            <element signature="e#1062#1063#0" expanded="true" />
+            <element signature="e#1104#1105#0" expanded="true" />
+            <element signature="e#1132#1133#0" expanded="true" />
+            <element signature="e#1996#1997#0" expanded="true" />
+            <element signature="e#2026#2027#0" expanded="true" />
+            <element signature="e#2068#2069#0" expanded="true" />
+            <element signature="e#2099#2100#0" expanded="true" />
+            <element signature="e#2142#2143#0" expanded="true" />
+            <element signature="e#2176#2177#0" expanded="true" />
+            <element signature="e#2435#2436#0" expanded="true" />
+            <element signature="e#2469#2470#0" expanded="true" />
+            <element signature="e#2671#2672#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Edge.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="25" selection-start-line="25" selection-end-line="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#348#349#0" expanded="true" />
+            <element signature="e#377#378#0" expanded="true" />
+            <element signature="e#433#434#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_112/src.zip!/java/util/LinkedList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="336" column="19" selection-start-line="336" selection-start-column="19" selection-end-line="336" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/BipartiteGraph.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1065">
+          <caret line="15" column="16" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3024#3025#0" expanded="true" />
+            <element signature="e#3094#3095#0" expanded="true" />
+            <element signature="e#3450#3451#0" expanded="true" />
+            <element signature="e#3547#3548#0" expanded="true" />
+            <element signature="e#5055#5056#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/RunAlgorithm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="665">
-          <caret line="244" column="2" selection-start-line="244" selection-start-column="2" selection-end-line="244" selection-end-column="2" />
+        <state relative-caret-position="369">
+          <caret line="208" column="10" selection-start-line="208" selection-start-column="10" selection-end-line="208" selection-end-column="10" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#Sample_Out_Start#0;class#RunAlgorithm#0" />
-            <element signature="method#Sample_Out_Mid#0;class#RunAlgorithm#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Node.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="48" selection-start-line="48" selection-end-line="48" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1044#1045#0" expanded="true" />
-            <element signature="e#1072#1073#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="89">
-          <caret line="158" column="2" selection-start-line="158" selection-start-column="2" selection-end-line="158" selection-end-column="2" />
-          <folding>
-            <element signature="method#printMatrixGraph#0;class#Main#0" />
-            <element signature="method#printMatrixGraph#1;class#Main#0" />
-            <element signature="method#printVNeighborMatrix#0;class#Main#0" />
-            <element signature="method#randomStep#0;class#Main#0" />
-            <element signature="method#randomStepToNeighbor#1;class#Main#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/BipartiteGraph.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="26">
-          <caret line="194" column="87" selection-start-line="194" selection-start-column="87" selection-end-line="194" selection-end-column="87" />
+        <state relative-caret-position="263">
+          <caret line="129" column="30" selection-start-line="129" selection-start-column="30" selection-end-line="129" selection-end-column="30" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2696#2697#0" expanded="true" />
-            <element signature="e#2731#2732#0" expanded="true" />
-            <element signature="e#3634#3635#0" expanded="true" />
-            <element signature="e#3680#3681#0" expanded="true" />
-            <element signature="e#3731#3732#0" expanded="true" />
-            <element signature="e#3777#3778#0" expanded="true" />
-            <element signature="method#removeEdge#0;class#BipartiteGraph#0" />
-            <element signature="method#printEdges#0;class#BipartiteGraph#0" />
-            <element signature="e#4917#4918#0" expanded="true" />
-            <element signature="e#4951#4952#0" expanded="true" />
-            <element signature="method#deepCopyGraph#0;class#BipartiteGraph#0" />
-            <element signature="method#fillVNeighborArr#0;class#BipartiteGraph#0" />
           </folding>
         </state>
       </provider>

@@ -14,87 +14,84 @@ public class BipartiteGraph {
      ***/
 
     private int numOfVertex;
-    private Node[] adjListArray;
+    private Node[] Qnodes;
+    private Node[] Pnodes;
     private LinkedList<Edge> edges;
     private int edgeCounter; //used as identifier to edges
-    private int dRegularNum; //TODO - might use this
+    private int dRegularNum;
 //    private int[] numOfNeighbors;
 //    private int[][] vNeighborsArray;
 
     /*** constructors ***/
-    BipartiteGraph(int numOfVer, int dregNum) {
-        if (dregNum >= numOfVer)
+    private void Build2DBipartiteGraph() {
+        int num = this.numOfVertex;
+        for (int i = 0; i < num; i ++) {
+            Edge e1 = new Edge(Pnodes[i],Qnodes[i],edgeCounter++);
+            Edge e2 = new Edge(Pnodes[i],Qnodes[((i+1) % num)],edgeCounter++);
+            Pnodes[i].addEdge(e1);
+            Pnodes[i].addEdge(e2);
+            Qnodes[i].addEdge(e1);
+            Qnodes[((i+1) % num)].addEdge(e2);
+            this.edges.add(e1);
+            this.edges.add(e2);
+        }
+    }
+
+    private void Build3DBipartiteGraph() {
+        int num = this.numOfVertex;
+        for (int i = 0; i < num; i ++) {
+            Edge e1 = new Edge(Pnodes[i],Qnodes[i],edgeCounter++);
+            Edge e2 = new Edge(Pnodes[i],Qnodes[(i + 1) % num],edgeCounter++);
+            Edge e3 = new Edge(Pnodes[i],Qnodes[(i + 2) % num],edgeCounter++);
+            Pnodes[i].addEdge(e1);
+            Pnodes[i].addEdge(e2);
+            Pnodes[i].addEdge(e3);
+            Qnodes[i].addEdge(e1);
+            Qnodes[(i + 1) % num].addEdge(e2);
+            Qnodes[(i + 2) % num].addEdge(e3);
+            this.edges.add(e1);
+            this.edges.add(e2);
+            this.edges.add(e3);
+        }
+    }
+
+
+    private void BuildKDBipartiteGraph() {
+        int num = this.numOfVertex;
+        for (int i = 0; i < num; i ++) {
+            for(int j=0; j<dRegularNum; j++){
+                Edge e1 = new Edge(Pnodes[i],Qnodes[(i + j) % num],edgeCounter++);
+                Pnodes[i].addEdge(e1);
+                Qnodes[(i + j) % num].addEdge(e1);
+                this.edges.add(e1);
+
+            }
+        }
+    }
+
+
+    //todo numofver if per list
+    BipartiteGraph(int numOfVer, int degNum) {
+        if (degNum > numOfVer)
             throw new IllegalArgumentException("ERROR - d-regular num must be smaller then number of vertices!");
-        this.numOfVertex = numOfVer + 2;
-        this.adjListArray = new Node[numOfVer + 2];
-        for (int i = 0; i < numOfVer; i++) //reset normal vertices
-            adjListArray[i] = new Node(i);
-        adjListArray[numOfVer] = new Node(100, Node.VerticeType.SNODE); //set s node
-        adjListArray[numOfVer + 1] = new Node(200, Node.VerticeType.TNODE); //set t node
+        this.numOfVertex = numOfVer;
+        this.Qnodes = new Node[numOfVer];
+        this.Pnodes = new Node[numOfVer];
+        int tmp=1;
+        for (int i = 0; i < numOfVer; i++) { //reset normal vertices
+            Qnodes[i] = new Node(tmp++, Node.VerticeType.QNODE);
+            Pnodes[i] = new Node(tmp++, Node.VerticeType.PNODE);
+        }
         this.edges = new LinkedList<>();
         this.edgeCounter = 1;
-        this.dRegularNum = dregNum;
-
+        this.dRegularNum = degNum;
+        //build the graph edges
+        BuildKDBipartiteGraph();
     }
 
 
 
-    /*
-    BipartiteGraph(int V, int regularNum) {
-        if (V % 2 != 0)//validation check
-            throw new IllegalArgumentException("illegal number of vertex ->should be even!");
-        this.numOfVertex = V;
-        this.edgeCounter = 1;
-        // define the size of array as
-        // number of vertices
-        this.adjListArray = new int[V][V];
-        this.numOfNeighbors = new int[V];
-        // Create a new adjacency matrix
-        // reset the new value
-        for (int i = 0; i < V; i++) {
-            this.numOfNeighbors[i] = 0;
-            for (int j = 0; j < V; j++)
-                this.adjListArray[i][j] = 0;
-        }
-        edges = new LinkedList();
-        this.dRegularNum = regularNum;
-        this.vNeighborsArray = new int[V][regularNum];
-        for (int i = 0; i < V; i++)
-            for (int j = 0; j < regularNum; j++)
-                this.vNeighborsArray[i][j] = 0;
-    }
 
-    BipartiteGraph(int[][] adjListArray, int regularNum) {
-        int vNum = adjListArray[0].length;
-        if (vNum % 2 != 0)//validation check
-            throw new IllegalArgumentException("illegal number of vertex ->should be even!");
-        this.numOfVertex = vNum;
-        this.edgeCounter = 0;
-        // define the size of array as
-        // number of vertices
-        this.adjListArray = adjListArray;
-        this.numOfNeighbors = new int[vNum];
-        edges = new LinkedList();
-        // reset the new value
-        for (int i = 0; i < vNum; i += 2) { //skip odd index ->because BipartiteGraph
-            int counter = 0;
-            for (int j = 0; j < vNum; j++) {
-                if (adjListArray[i][j] == 1) {
-                    counter++;
-                    this.edges.add(new Edge(i, j, this.edgeCounter));
-                    this.edgeCounter++;
-                }
-            }
-            this.numOfNeighbors[i] = counter;
-            this.dRegularNum = counter;
-        }
-        this.dRegularNum = regularNum;
-        this.vNeighborsArray = new int[vNum][regularNum];
-        fillVNeighborArr();
-
-    }
-
-    */
 
     /*** getters ***/
     public int getNumOfVertex() {
@@ -105,10 +102,15 @@ public class BipartiteGraph {
         return edges;
     }
 
+    public Node[] getQnodes(){ return Qnodes;}
+    public Node[] getPnodes(){ return Pnodes;}
 
+    public int getEdgeCounter() {return edgeCounter;}
+    /*
     public Node[] getAdjListArray() {
         return adjListArray;
     }
+    */
 
     /*** setters ***/
     public void setdRegularNum(int dRegularNum) {
@@ -121,11 +123,11 @@ public class BipartiteGraph {
 
 
     /*** methods ***/
-    public boolean contains(int from, int to) {
+    /*public boolean contains(int from, int to) {
         return adjListArray[from].getEdges().contains(to);
-    }
+    }*/
 
-    public void addEdge(Integer a, Integer b) {
+  /*  public void addEdge(Integer a, Integer b) {
         if (a % 2 == 0 && b % 2 == 0)
             throw new IllegalArgumentException("ERROR - addEdge - both vertex index are EVEN!");
         if (a % 2 != 0 && b % 2 != 0)
@@ -139,16 +141,16 @@ public class BipartiteGraph {
 //        numOfNeighbors[b]++;
         edges.add(e);
 
-    }
+    }*/
 
-    public void removeEdge(Edge e) {
+  /*  public void removeEdge(Edge e) {
         adjListArray[e.getV_from()].getEdges().remove(e.getV_to());
         adjListArray[e.getV_to()].getEdges().remove(e.getV_from());
         edges.remove(e);
     }
+*/
 
-
-    public void printEdges(int index) {
+ /*   public void printEdges(int index) {
 
         adjListArray[index].getEdges().forEach((tmp) -> {
             if(tmp == numOfVertex-1)
@@ -163,10 +165,12 @@ public class BipartiteGraph {
         return adjListArray[a].getEdges().size();
     }
 
+*/
+
     public int getDRegularNum() {
         return dRegularNum;
     }
-
+/*
     public void connectSnTNodes() {
         //this func connect S node to all nodes that are not superNodes (from P)
         // andd     connect all nodes that are not superNodes (from Q) to T
@@ -175,14 +179,14 @@ public class BipartiteGraph {
         for (int i = 0; i < numOfVertex - 2; i++) {
             if (i % 2 == 0 && !adjListArray[i].isSuperNode()) { //if even and not superNode -> add d times edges s->v
                 for (int j = 0; j < this.dRegularNum; j++) {
-                    Edge e = new Edge(s, i, edgeCounter++);
+                    InitEdge e = new InitEdge(s, i, edgeCounter++);
                     edges.add(e);
                     this.adjListArray[s].getEdges().add(i);
                 }
             } else {//if odd and not superNode -> add d times edges s->v
                 if (!adjListArray[i].isSuperNode()) {
                     for (int j = 0; j < this.dRegularNum; j++) {
-                        Edge e = new Edge(i, t, edgeCounter++);
+                        InitEdge e = new InitEdge(i, t, edgeCounter++);
                         edges.add(e);
                         this.adjListArray[i].getEdges().add(t);
                     }
@@ -190,6 +194,7 @@ public class BipartiteGraph {
             }
         }
     }
+
 
     //TODO - NEED TO REPLACE THIS FUNC IN RUNALGORITHM LATER
     //TODO - THIS FUNC MAKE THE FROM NODE TO THE SUPERNODE! NOT CREATING ANOTHER COPY!!
@@ -226,12 +231,12 @@ public class BipartiteGraph {
     }
 
     //TODO - NEED TO REPLACE THIS FUNC IN RUNALGORITHM LATER
-    public BipartiteGraph copyOFGraph(BipartiteGraph src){
+    public BipartiteGraph copyOfGraph(BipartiteGraph src){
         BipartiteGraph output = new BipartiteGraph(src.numOfVertex-2,src.getDRegularNum());
-        for (Edge e:src.getEdges()) {
+        for (InitEdge e:src.getEdges()) {
             output.getAdjListArray()[e.getV_from()].getEdges().add(e.getV_to());
             output.getAdjListArray()[e.getV_to()].getEdges().add(e.getV_from());
-            Edge tmp=new Edge(e.getV_from(),e.getV_to(),e.getV_num());
+            InitEdge tmp=new InitEdge(e.getV_from(),e.getV_to(),e.getV_num());
             output.edges.add(tmp);
         }
         for(int i=0; i<src.numOfVertex-2;i++){
@@ -250,7 +255,7 @@ public class BipartiteGraph {
             adjListArray[i].resetEdges();
     }
 
-
+*/
     /*
     public static void deepCopyGraph(BipartiteGraph from, BipartiteGraph to) {
         int max = from.numOfVertex;
