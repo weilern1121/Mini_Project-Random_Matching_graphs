@@ -2,6 +2,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Random;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class RunAlgorithm {
 
@@ -11,8 +12,6 @@ public class RunAlgorithm {
      ***/
     private LinkedList<Edge> Mj;
     private LinkedList<Edge> p;
-    //private int NodeS;
-    //private int NodeT;
     private int NodesNumber;
     private Node[] PNodes;
     private Node[] QNodes;
@@ -24,8 +23,6 @@ public class RunAlgorithm {
     public RunAlgorithm(Node[] PNodes, Node[] QNodes, int ecounter) {
         this.Mj = new LinkedList<>();
         this.p = new LinkedList<>();
-        //this.NodeS=10;
-        // this.NodeT=11;
         this.PNodes = PNodes;
         this.QNodes = QNodes;
         this.edgesCounter = ecounter;
@@ -33,11 +30,10 @@ public class RunAlgorithm {
     }
 
     /*** methods ***/
-    public LinkedList<Edge> PerfectMatch() {
+//    public LinkedList<Edge> PerfectMatch() {
+    public int PerfectMatch() {
         int NodesNumber = PNodes.length;
-        // NodeS = NodeS * NodesNumber;
-        // NodeT = NodeT * NodesNumber;
-        int j = 0, bj;
+        int j = 0, bj,pathErrCounter=0;
         boolean flag = false;
         Mj = new LinkedList<Edge>();
         while (j< NodesNumber) {
@@ -47,10 +43,10 @@ public class RunAlgorithm {
             flag = false;
             while (!flag) {
                 p = new LinkedList<Edge>();
-//                SNodes = new Node(10*NodesNumber, Node.VerticeType.SNODE);
-//                TNodes = new Node(11*NodesNumber, Node.VerticeType.TNODE);
                 if (Truncated_Walk(SNodes, bj))
                     flag = true;
+                else
+                    pathErrCounter++;
             }
             SetNewMj(p);
             j++;
@@ -58,7 +54,11 @@ public class RunAlgorithm {
                 int k=0;
             }
         }
-        return Mj;
+        if(validationCheck())
+            return pathErrCounter;
+//        return Mj;
+        System.out.println("ERROR in PerfectMatch!");
+        return -1;
     }
 
 
@@ -117,7 +117,7 @@ public class RunAlgorithm {
         Edge ee, newFirst, newSecond;
         boolean superNode;
         LinkedList<Edge> TransEdges;
-
+        int regNum = PNodes[0].getEdges().size();
         for (int i = 0; i < NodesNumber; i++) {
             pp = PNodes[i];
             superNode = false;
@@ -134,22 +134,29 @@ public class RunAlgorithm {
             }
 
             if (!superNode) { //TODO - why to add exactly 2 edges? should be depends on the d-regular number
+                for(int j=0; j<regNum; j++)
+                    SNodes.addTransEdge(new Edge(SNodes, pp,edgesCounter++));
+                /*
                 newFirst = new Edge(SNodes, pp, (pp.getIdNum() * (-1)));
                 newSecond = new Edge(SNodes, pp, (pp.getIdNum() * (-1)) - NodesNumber);//TODO - what is this edge-num id
                 SNodes.addTransEdge(newFirst);
                 SNodes.addTransEdge(newSecond);
+                */
             }
         }
 
         for (int k = 0; k < NodesNumber; k++) {
             qq = QNodes[k];
             if (!qq.isSuperNode()) {
+                for(int j=0; j<regNum; j++)
+                    qq.addTransEdge(new Edge(qq, TNodes,edgesCounter++));
+                /*
                 newFirst = new Edge(qq, TNodes, (qq.getIdNum() * (-1)));//TODO - what this edgeId calculation??
                 newSecond = new Edge(qq, TNodes, (qq.getIdNum() * (-1)) - NodesNumber);
 
                 qq.addTransEdge(newFirst);
                 qq.addTransEdge(newSecond);
-
+                */
             }
         }
     }
@@ -268,6 +275,19 @@ public class RunAlgorithm {
                 lst.add(e.getV_from().getIdNum());
         }
         return false;
+    }
+
+    private boolean validationCheck(){
+        AtomicInteger evenCounter= new AtomicInteger();
+        AtomicInteger oddCounter= new AtomicInteger();
+        Mj.forEach((tmp) -> {
+            evenCounter.addAndGet(tmp.getV_from().getIdNum());
+            oddCounter.addAndGet(tmp.getV_to().getIdNum());
+        });
+        int num=NodesNumber;
+        int evenNum= evenCounter.get();
+        int oddNum= oddCounter.get();
+        return evenNum == num * (num + 1) && oddNum == num * num;
     }
 
 }
