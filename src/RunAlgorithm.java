@@ -290,4 +290,9 @@ public class RunAlgorithm {
         return evenNum == num * (num + 1) && oddNum == num * num;
     }
 
+    public LinkedList<Edge> getPerfectMatch(){
+        PerfectMatch();
+        return Mj;
+    }
+
 }

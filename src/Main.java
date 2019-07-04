@@ -1,6 +1,7 @@
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.LinkedList;
+import java.util.Scanner;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import static java.util.Collections.shuffle;
@@ -107,8 +108,8 @@ public class Main {
         }
 
     */
-    private static void Test1(int numOfVer, int iterNum) {
-        for (int k = 0; k < 9; k++) {
+    private static void Test1(int numOfVer, int iterNum, int degnum) {
+       /* for (int k = 0; k < 9; k++) {
             int degnum = 0;
             switch (k) {
                 case 0:
@@ -139,28 +140,29 @@ public class Main {
                     degnum = 50;
                     break;
 
-            }
+            }*/
 //        g.getEdges().forEach((tmp) -> System.out.println(tmp.getV_from().getIdNum() + "->" + tmp.getV_to().getIdNum()));
 
-            int[] faults = new int[iterNum];
-            for (int i = 0; i < iterNum; i++) {
-                BipartiteGraph g = new BipartiteGraph(numOfVer, degnum, 1);
-                RunAlgorithm run = new RunAlgorithm(g.getPnodes(), g.getQnodes(), g.getEdgeCounter());
-                faults[i] = run.PerfectMatch();
+        int[] faults = new int[iterNum];
+        for (int i = 0; i < iterNum; i++) {
+            BipartiteGraph g = new BipartiteGraph(numOfVer, degnum, 1);
+            //check that the graph is d-regular
+            ValidatConstructorTest(g);
 
-            }
+            RunAlgorithm run = new RunAlgorithm(g.getPnodes(), g.getQnodes(), g.getEdgeCounter());
+            faults[i] = run.PerfectMatch();
 
-            double tmp = 0;
-            for (int i = 0; i < iterNum; i++)
-                tmp += faults[i];
-            System.out.println("fault avg. for numofVertices:" + numOfVer + " and dregNum: " + degnum + " = " + tmp / iterNum);
         }
+
+        double tmp = 0;
+        for (int i = 0; i < iterNum; i++)
+            tmp += faults[i];
+        System.out.println("fault avg. for numofVertices:" + numOfVer + " and dregNum: " + degnum + " = " + tmp / iterNum);
+//        }
     }
 
-    private static void Test2() {
-        BipartiteGraph g = null;
-
-        int i, k=-1;
+    private static void ValidatConstructorTest(BipartiteGraph g) {
+        /*int i, k=-1;
         for (i=0; i<6; i++) {
             switch (i) {
                 case 0:
@@ -182,38 +184,38 @@ public class Main {
                     k = 100;
                     break;
             }
-            for (int j = 2; j < 6; j+=3) {
-                System.out.println("-------  k= " + k + " , j= " + j + "  --------------");
-                g = new BipartiteGraph(k, j, 2);
+            for (int j = 2; j < 6; j+=3) {*/
+//                System.out.println("-------  k= " + k + " , j= " + j + "  --------------");
+//                g = new BipartiteGraph(k, j, 2);
 //                g.getEdges().forEach((tmp) -> System.out.println(tmp.getV_from().getIdNum() + "->" + tmp.getV_to().getIdNum()));
 
 
-                LinkedList<Edge> tmp = g.getEdges();
-                int num = 2 * g.getNumOfVertex() + 1;
-                int[] counters = new int[num];
-                for (Edge e : tmp) {
-                    counters[e.getV_from().getIdNum()]++;
-                    counters[e.getV_to().getIdNum()]++;
-                }
-                boolean flag = false;
-                int num2 = g.getDRegularNum();
-                int n;
-                for (n = 1; n < num && !flag; n++) {
-                    if (counters[n] != num2)
-                        flag = true;
-                }
-                if (flag)
-                    System.out.println("ERROR in building the graph in i=" + n);
-                else
-                    System.out.println("OK");
-            }
+        LinkedList<Edge> tmp = g.getEdges();
+        int num = 2 * g.getNumOfVertex() + 1;
+        int[] counters = new int[num];
+        for (Edge e : tmp) {
+            counters[e.getV_from().getIdNum()]++;
+            counters[e.getV_to().getIdNum()]++;
         }
+        boolean flag = false;
+        int num2 = g.getDRegularNum();
+        int n;
+        for (n = 1; n < num && !flag; n++) {
+            if (counters[n] != num2)
+                flag = true;
+        }
+        if (flag)
+            System.out.println("ERROR in building the graph in i=" + n);
+//                else
+//                    System.out.println("OK");
+//            }
+//        }
     }
 
-    private static void Test3(int numOfVer, int iterNum) {
+    private static void Test2(int numOfVer, int iterNum, int degnum) {
         BipartiteGraph g;
-        for (int k = 0; k < 3; k++) {
-            int degnum = 0;
+//        for (int k = 0; k < 3; k++) {
+            /*int degnum = 0;
             switch (k) {
                 case 0:
                     degnum = 2;
@@ -243,68 +245,79 @@ public class Main {
                     degnum = 50;
                     break;
 
-            }
+            }*/
 //        g.getEdges().forEach((tmp) -> System.out.println(tmp.getV_from().getIdNum() + "->" + tmp.getV_to().getIdNum()));
 
-            int[] faults = new int[iterNum];
-            for (int i = 0; i < iterNum; i++) {
-                g = new BipartiteGraph(numOfVer, degnum, 2);
-                RunAlgorithm run = new RunAlgorithm(g.getPnodes(), g.getQnodes(), g.getEdgeCounter());
-                faults[i] = run.PerfectMatch();
+        int[] faults = new int[iterNum];
+        for (int i = 0; i < iterNum; i++) {
+            g = new BipartiteGraph(numOfVer, degnum, 2);
+            //check that the graph is d-regular
+            ValidatConstructorTest(g);
 
-            }
+            RunAlgorithm run = new RunAlgorithm(g.getPnodes(), g.getQnodes(), g.getEdgeCounter());
+            faults[i] = run.PerfectMatch();
 
-            double tmp = 0;
-            for (int i = 0; i < iterNum; i++)
-                tmp += faults[i];
-            System.out.println("fault avg. for numofVertices:" + numOfVer + " and dregNum: " + degnum + " = " + tmp / iterNum);
+        }
+
+        double tmp = 0;
+        for (int i = 0; i < iterNum; i++)
+            tmp += faults[i];
+        System.out.println("fault avg. for numofVertices:" + numOfVer + " and dregNum: " + degnum + " = " + tmp / iterNum);
+//        }
+    }
+
+    private static void Test3(int numOfVer, int iterNum, int degnum) {
+
+        for(int i=0; i<iterNum; i++) {
+            BipartiteGraph g = new BipartiteGraph(numOfVer, degnum, 1);
+            //check that the graph is d-regular
+            ValidatConstructorTest(g);
+            //print the graph
+            System.out.println("BipartiteGraph:");
+            g.getEdges().forEach((tmp) -> System.out.println(tmp.getV_from().getIdNum() + "->" + tmp.getV_to().getIdNum()));
+            //run the algorithm
+            RunAlgorithm run = new RunAlgorithm(g.getPnodes(), g.getQnodes(), g.getEdgeCounter());
+            LinkedList<Edge> pmatch = run.getPerfectMatch();
+            //print result
+            System.out.println("\n The Perfect Match:");
+            pmatch.forEach((tmp) -> System.out.println(tmp.getV_from().getIdNum() + "->" + tmp.getV_to().getIdNum()));
+            System.out.println("\n------------------------\n");
         }
     }
 
 
-
-
-
     public static void main(String[] args) {
 
-        //TODO - input for later
-        /*Scanner in = new Scanner(System.in);
+        Scanner in = new Scanner(System.in);
+        System.out.println("Enter Test number:\n1) Test the average fault in finding path of the Algorithm with Explicit constructed BipartiteGraph \n" +
+                "2) Test  the average fault in finding path of the  Algorithm with Random constructed BipartiteGraph\n" +
+                "3) Print the Perfect match");
+        int type = in.nextInt();
         System.out.println("Enter num of vertices");
-        int v=in.nextInt();
+        int v = in.nextInt();
         System.out.println("Enter d-regular number");
-        int num=in.nextInt();
-        if(num>v)
+        if (type == 2)
+            System.out.println("(NOTE - for fluently running please enter d-regular number <6)");
+        int dnum = in.nextInt();
+        if (dnum > v) {
             throw new IllegalArgumentException("ERROR - in BipartiteGraph d-regular number < v/2 !!");
-        BipartiteGraph g = new BipartiteGraph(v, num);
-        */
+        }
+        System.out.println("Enter num of runs");
+        int run = in.nextInt();
 
-//        Test1(50, 10);
-//        Test2();
-
-        Test3(5,50);
-        System.out.println("------------");
-        Test3(10,50);
-        System.out.println("------------");
-        Test3(20,50);
-        System.out.println("------------");
-        Test3(50,50);
-        System.out.println("------------");
-
-
-
-        /*for (int i = 0; i < 10; i++) {
-            BipartiteGraph g = new BipartiteGraph(5, 2, 2);
-            g.getEdges().forEach((tmp) -> System.out.println(tmp.getV_from().getIdNum() + "->" + tmp.getV_to().getIdNum()));
-            System.out.println("-----------");
-            RunAlgorithm run = new RunAlgorithm(g.getPnodes(), g.getQnodes(), g.getEdgeCounter());
-            System.out.println(run.PerfectMatch());
-        }*/
+        switch (type) {
+            case 1:
+                Test1(v, run, dnum);
+                break;
+            case 2:
+                Test2(v, run, dnum);
+                break;
+            case 3:
+                Test3(v, run, dnum);
+                break;
 
 
-        //TODO - try to shuffle
-
-//        System.out.println("\n\n"+lst);
-
+        }
 
     }
 
