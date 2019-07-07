@@ -16,8 +16,6 @@ public class Edge {
     }
 
     //methods
-
-
     public Node getV_from() {
         return V_from;
     }
@@ -26,5 +24,4 @@ public class Edge {
         return V_to;
     }
 
-    public int getV_num() {return num;}
 }

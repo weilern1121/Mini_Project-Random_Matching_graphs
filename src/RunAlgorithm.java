@@ -1,6 +1,4 @@
 import java.util.LinkedList;
-import java.util.List;
-import java.util.ListIterator;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -10,6 +8,8 @@ public class RunAlgorithm {
     /***
      * NODE S -> P -> Q -> NODE T
      ***/
+
+    /*** fields ***/
     private LinkedList<Edge> Mj;
     private LinkedList<Edge> p;
     private int NodesNumber;
@@ -30,14 +30,13 @@ public class RunAlgorithm {
     }
 
     /*** methods ***/
-//    public LinkedList<Edge> PerfectMatch() {
+    //to get the perfect match this func get called via getPerfectMatch
     public int PerfectMatch() {
         int NodesNumber = PNodes.length;
         int j = 0, bj,pathErrCounter=0;
         boolean flag = false;
         Mj = new LinkedList<Edge>();
         while (j< NodesNumber) {
-
             bj = 2 * (2 + (NodesNumber / (NodesNumber - j)));
             TransformGraphH();
             flag = false;
@@ -50,13 +49,14 @@ public class RunAlgorithm {
             }
             SetNewMj(p);
             j++;
+            //used for debugging
             if(Checkpoint()){
                 int k=0;
             }
         }
         if(validationCheck())
             return pathErrCounter;
-//        return Mj;
+        //got here - something wrong with the perfect match
         System.out.println("ERROR in PerfectMatch!");
         return -1;
     }
@@ -65,7 +65,6 @@ public class RunAlgorithm {
     private boolean Truncated_Walk(Node startNode, int bj) {
         Edge e;
         if (startNode.getVerType() == Node.VerticeType.TNODE)
-//        if (startNode.getIdNum() == NodeT)
             return true;
         if (bj == 0)
             return false;
@@ -90,7 +89,6 @@ public class RunAlgorithm {
         }
     }
 
-
     private void TransformGraphH() {
         SNodes = new Node(10 * NodesNumber, Node.VerticeType.SNODE);
         TNodes = new Node(11 * NodesNumber, Node.VerticeType.TNODE);
@@ -112,9 +110,8 @@ public class RunAlgorithm {
 
 
     private void SuperST() {
-
         Node pp, qq;
-        Edge ee, newFirst, newSecond;
+        Edge ee;
         boolean superNode;
         LinkedList<Edge> TransEdges;
         int regNum = PNodes[0].getEdges().size();
@@ -133,15 +130,9 @@ public class RunAlgorithm {
                 }
             }
 
-            if (!superNode) { //TODO - why to add exactly 2 edges? should be depends on the d-regular number
+            if (!superNode) {
                 for(int j=0; j<regNum; j++)
                     SNodes.addTransEdge(new Edge(SNodes, pp,edgesCounter++));
-                /*
-                newFirst = new Edge(SNodes, pp, (pp.getIdNum() * (-1)));
-                newSecond = new Edge(SNodes, pp, (pp.getIdNum() * (-1)) - NodesNumber);//TODO - what is this edge-num id
-                SNodes.addTransEdge(newFirst);
-                SNodes.addTransEdge(newSecond);
-                */
             }
         }
 
@@ -150,39 +141,12 @@ public class RunAlgorithm {
             if (!qq.isSuperNode()) {
                 for(int j=0; j<regNum; j++)
                     qq.addTransEdge(new Edge(qq, TNodes,edgesCounter++));
-                /*
-                newFirst = new Edge(qq, TNodes, (qq.getIdNum() * (-1)));//TODO - what this edgeId calculation??
-                newSecond = new Edge(qq, TNodes, (qq.getIdNum() * (-1)) - NodesNumber);
-
-                qq.addTransEdge(newFirst);
-                qq.addTransEdge(newSecond);
-                */
             }
         }
     }
 
 
     private void SetNewMj(LinkedList<Edge> newPath) {
-
-        /*
-        System.out.println("------------------------------");
-        System.out.print("Mj BEFRORE: {  ");
-        for (Edge tmp :Mj) {
-            System.out.print(tmp.getV_from().getIdNum() + "->" + tmp.getV_to().getIdNum()+" ; ");
-        }
-        System.out.println(" }");
-
-        System.out.print("cur path: {  ");
-        for (Edge tmp :newPath) {
-            System.out.print(tmp.getV_from().getIdNum() + "->" + tmp.getV_to().getIdNum()+" ; ");
-        }
-        System.out.println(" }");
-*/
-
-//        pp.removeIf(e -> (e.getV_from().getVerType() == Node.VerticeType.SNODE ||
-//                e.getV_to().getVerType() == Node.VerticeType.TNODE ||
-//                EdgeContain(e)));
-//
         //remove end edges from newPath
         newPath.removeIf(e -> (e.getV_from().getVerType() == Node.VerticeType.SNODE ||
                 e.getV_to().getVerType() == Node.VerticeType.TNODE));
@@ -196,29 +160,17 @@ public class RunAlgorithm {
             if(EdgeContain(e,Mj))
                 commonEdges.add(e);
         }
+
         //remove common from both lists
         Mj.removeIf(e->EdgeContain(e,commonEdges));
         newPath.removeIf(e->EdgeContain(e,commonEdges));
+
         //concat lists into Mj
         Mj.addAll(newPath);
-/*
-        System.out.print("commonEdges: {  ");
-        for (Edge tmp :commonEdges) {
-            System.out.print(tmp.getV_from().getIdNum() + "->" + tmp.getV_to().getIdNum()+" ; ");
-        }
-        System.out.println(" }");
-
-        System.out.print("Mj After: {  ");
-        for (Edge tmp :Mj) {
-            System.out.print(tmp.getV_from().getIdNum() + "->" + tmp.getV_to().getIdNum()+" ; ");
-        }
-        System.out.println(" }");
-        */
     }
 
     private boolean EdgeContain(Edge ee, LinkedList<Edge> lst) {
         Edge currentE;
-
         for (int i = 0; i < lst.size(); i++) {
             currentE = lst.get(i);
             if ((currentE.getV_to() == ee.getV_to()) &&
@@ -235,7 +187,6 @@ public class RunAlgorithm {
     private int EdgeLoopContain( Edge ee, LinkedList<Edge> lst, int from) {
         int i=from;
         Edge currentE;
-
         for (; i < lst.size(); i++) {
             currentE = lst.get(i);
             if ((currentE.getV_to() == ee.getV_to()) &&
